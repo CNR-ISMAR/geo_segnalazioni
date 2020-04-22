@@ -18,7 +18,7 @@
 <script src="../leaflet-0.5/plugins/Bing.js"></script>
 <!-- geocode control -->
 <script type="text/javascript">
-	var nomeComune = 'San Pietro di Feletto';
+	var nomeComune = '';
 </script>	
 <script src="../leaflet-0.5/plugins/L.GeoSearch/src/js/l.control.geosearch.js"></script>
 <script src="../leaflet-0.5/plugins/L.GeoSearch/src/js/l.geosearch.provider.google.js"></script>
@@ -34,20 +34,6 @@
 <style type="text/css">
 #map { height: 480px; }
 </style>
-<!-- google analytics-->
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27137462-4']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
 
 
 <div id="map" class="map"></div>
