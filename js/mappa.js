@@ -20,8 +20,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // id of text input
 coord_control
 //attribute of text input in form where coordinates will be written
-var latitude_name='entry.615476263';
-var longitude_name='entry.1393626566';
+var latitude_name='latitude';
+var longitude_name='longitude';
 
 //initial center of the map
 var center_lat = 45.4298;
@@ -33,12 +33,13 @@ var map ;
 /*******************************
 BASE LAYERS
 *****************************/
-var mapquestOSM = new L.TileLayer("http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
-	maxZoom: 17,
-	subdomains: ["otile1", "otile2", "otile3", "otile4"],
-	attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.'
-});
+var OSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+})
 
+var cignobase = L.tileLayer('http://cigno.atlantedellalaguna.it/geoserver/gwc/service/wmts?service=WMTS?', {
+        layers: 'carta_base'
+    }),
 
 //var googleLayer = new L.Google(); 
 
@@ -151,7 +152,7 @@ map.addControl(layersControl);
 			segnalazione.addLayer(L.marker([latitude, longitude], {icon: markIcon}));
 			//modifica il contenuto della casella di testo desiderata
 			document.getElementByName(latitude_name).value = latitude;
-      document.getElementByName(longitude_name).value = longitude;
+      			document.getElementByName(longitude_name).value = longitude;
 
 			
 			
