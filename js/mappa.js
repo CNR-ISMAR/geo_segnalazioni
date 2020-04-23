@@ -18,16 +18,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 ************************************/
 //adjust these variables to fit your needs
 // id of text input
-coord_control
+var coord_control;
 //attribute of text input in form where coordinates will be written
-var latitude_name='latitude';
-var longitude_name='longitude';
+var latitude_id='lat';
+var longitude_id='lon';
 
 //initial center of the map
-var center_lat = 45.4298;
-var center_lon = 12.4557;
+var center_lat = 45.42713;
+var center_lon = 12.35858;
 //intial zoom level
-var map_zoom=14;
+var map_zoom=11;
 
 var map ;
 /*******************************
@@ -37,11 +37,11 @@ var OSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 })
 
-var cignobase = L.tileLayer('http://cigno.atlantedellalaguna.it/geoserver/gwc/service/wmts?service=WMTS?', {
+var cignobase = L.tileLayer.wms('http://cigno.atlantedellalaguna.it/geoserver/gwc/service/wms?', {
         layers: 'carta_base'
-    }),
+    })
 
-//var googleLayer = new L.Google(); 
+//var googleLayer = new L.Google();
 
 //var bingLayer = new L.BingLayer("AndoO6AeN_kKQeM6pHMG-r-9ZhlpYJ5ug5ObUQELdZrIksuKMEF8r2K7DAe6ZQFA");
 
@@ -68,7 +68,7 @@ STYLES AND ICON
 			iconAnchor: [9, 26],
 			popupAnchor: [9, 26]
 		});
-		
+
 		function onEachFeature(feature, layer) {
 			var popupContent = "<p>I started out as a GeoJSON " +
 					feature.geometry.type + ", but now I'm a Leaflet vector!</p>";
@@ -77,7 +77,7 @@ STYLES AND ICON
 				popupContent = feature.properties.popupContent;
 			    layer.bindPopup(popupContent);
 			}
-			
+
 
 		}
 
@@ -86,17 +86,7 @@ OVERLAYS
 *****************************/
 	//overlays
 	//confini geoJson
-	var confini = new L.geoJson(null,{ 
-		style: confini_style
-		
-		});
-	  $.getJSON("js/confine.geojson", function(data){
-	        confini.addData(data);
-			confini.eachLayer(function(layer){
-				//alert(layer.getBounds().getCenter().toString());
-				layer._container.style.pointerEvents='none';
-			});
-	    });
+
 
 /*******************************
 CREATE MAP
@@ -104,9 +94,9 @@ CREATE MAP
 
 
 		map = new L.Map('map', {
-			center: new L.LatLng(center_lat, center_lon), 
+			center: new L.LatLng(center_lat, center_lon),
 			zoom: map_zoom,
-			layers: [mapquestOSM],
+			layers: [cignobase],
 			zoomControl: true,
 			inertia: false
 		});
@@ -114,9 +104,9 @@ CREATE MAP
 
 //layergroup e aggiunta layers
 		var baseLayers = {
-			//"Google": googleLayer
+			"Base Atlante della Laguna": cignobase
 			//,"Bing" : bingLayer
-			"MapQuest": mapquestOSM
+			,"OpenStreetMap": OSM
 			// ,"IGM 25k": igmWMS
 		};
 		//var overlays = {
@@ -124,16 +114,16 @@ CREATE MAP
 		//};
 
 
-		layersControl = new L.Control.Layers(baseLayers,  overlays);
-map.addControl(layersControl); 
+		layersControl = new L.Control.Layers(baseLayers);
+map.addControl(layersControl);
 
 		//crea un layergroup dove aggiungere i marker
 		var segnalazione = new L.LayerGroup()
 			.addTo(map);
-		
-		
+
+
 		//crea un marker sulla mappa
-		var segnala = function(e){ 
+		var segnala = function(e){
 			//rimuove eventuali markers presenti dal layergroup
 			segnalazione.clearLayers();
 			//alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng);
@@ -141,87 +131,36 @@ map.addControl(layersControl);
 				point = map.getCenter();
 				}
 				else{
-				point = e.latlng;	
+				point = e.latlng;
 				}
-				
-				
+
+
 			var latitude = point.lat.toFixed(5);
 			var longitude = point.lng.toFixed(5);
-					
+
 			//aggiunge un layer al layergroup
 			segnalazione.addLayer(L.marker([latitude, longitude], {icon: markIcon}));
 			//modifica il contenuto della casella di testo desiderata
-			document.getElementByName(latitude_name).value = latitude;
-      			document.getElementByName(longitude_name).value = longitude;
+			document.getElementById(latitude_id).value = latitude;
+      document.getElementById(longitude_id).value = longitude;
 
-			
-			
+      var modalDiv = $('#mymodal');
+      modalDiv.modal({backdrop: false, show: true});
+
 		};
 //due funzioni per attivare e disattivare il controllo personalizzato e l'inserimento di coordinate
-				function attiva_coordinate(){
-				map.on('click', segnala);
-				//map.on('geosearch_showlocation', segnala)
-				//confini.on('click', segnala);
-			   };
-			   	function disattiva_coordinate(){
-				map.off('click', segnala);
+
+				map.on('click', segnala)
 				//map.off('geosearch_showlocation', segnala)
 				//confini.off('click', segnala);
-			   };
+
 			   function hidepoint() {
 			   segnalazione.clearLayers();
 			   disattiva_coordinate();
 			   };
 
-			
-	
-
-var popup = L.popup();
-
-	function onMapClick(e) {
-		popup
-			.setLatLng(e.latlng)
-			.setContent("You clicked the map at " + e.latlng.toString())
-			.openOn(map);
-	}
 
 
-//geocode control
-geocode = new L.Control.GeoSearch({
-				provider: new L.GeoSearch.Provider.Google({
-				}),
-			showMarker: false
-			});
-geocode.addTo(map);
-
-//locate control
-locateControl = L.control.locate({
-    position: 'bottomleft',  // set the location of the control
-    drawCircle: true,  // controls whether a circle is drawn that shows the uncertainty about the location
-    follow: true,  // follow the location if `watch` and `setView` are set to true in locateOptions
-    circleStyle: {},  // change the style of the circle around the user's location
-    markerStyle: {},
-    metric: true,  // use metric or imperial units
-    onLocationError: function(err) {alert(err.message)}  // define an error callback function
-})
-
-locateControl.addTo(map);
-
-//aggiungi il pcntrollo PanZoom
-var panzoomControl = new L.Control.PanZoom ({
-			pan: {
-				position: 'topleft',
-				showMarker: false
-				}
-		});
-		map.addControl(panzoomControl);
-
-//zoomButton.addTo(map);
-//error: zoomButton is undefined
-
-//map.on('click', onMapClick);
-// zoom the map to the polyline
-//map.fitBounds(segnalazioni.getBounds());
 
 
 PanZoomBoxControl = function(theZoomBoxFunction) {
@@ -269,5 +208,3 @@ ZoomBoxFunction = function () {
 
 
 map.addControl(PanZoomBoxControl(ZoomBoxFunction));
-
-SegnalaContr
