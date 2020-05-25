@@ -67,6 +67,22 @@ STYLES AND ICON
 			
 
 		}
+// cutom layer for csv data
+  var customLayer = L.geoJson(null, {
+    onEachFeature: function(feature, layer) {
+      layer.bindPopup(feature.properties.Title);
+      }
+  });
+
+if (csvfile === undefined){
+   csvfile= 'data.csv'		
+}
+
+  var runLayer = omnivore.csv(csvfile, null, customLayer)
+      .on('ready', function() {
+          // http://leafletjs.com/reference.html#map-fitbounds
+          map.fitBounds(runLayer.getBounds());
+      })
 
 /*******************************
 OVERLAYS
