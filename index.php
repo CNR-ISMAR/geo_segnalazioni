@@ -71,7 +71,13 @@
   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
   crossorigin=""></script>
 
-<script>
+
+    
+    
+ <!-- Load Omnivore plugin to convert CSV to GeoJSON format -->
+ <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
+
+<script>        
 $( document ).ready(function() {
     var modalDiv = $('#mymodal');
       modalDiv.modal({backdrop: false, show: false});
