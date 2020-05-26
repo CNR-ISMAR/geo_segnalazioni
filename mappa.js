@@ -1,11 +1,11 @@
 /***********************************
-Author: Amedeo Fadini per Tepco srl
-E-mail: tepco@tepco.it
-Date: 2012-2015
+Author: Amedeo Fadini
+E-mail: amedeo@amefad.it
+Date: 2020
 License: Free BSD http://opensource.org/licenses/BSD-2-Clause
 
-Copyright (c) 2012-2015, Tepco srl Vittorio Veneto
-All rights reserved.
+Copyright (c) 2012-2015, Tepco srl Vittorio Veneto tepoc@tepco.it
+Copyright (c) 2020 Amedeo Fadini
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
@@ -21,10 +21,8 @@ var map ;
 /*******************************
 BASE LAYERS
 *****************************/
-var mapquestOSM = new L.TileLayer("http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
-	maxZoom: 17,
-	subdomains: ["otile1", "otile2", "otile3", "otile4"],
-	attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.'
+var OSM = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
 
 
@@ -110,7 +108,7 @@ CREATE MAP
 		map = new L.Map('map', {
 			center: new L.LatLng(45.88941, 12.34400), 
 			zoom: 14,
-			layers: [mapquestOSM, confini],
+			layers: [OSM, confini],
 			zoomControl: true,
 			inertia: false
 		});
@@ -120,7 +118,7 @@ CREATE MAP
 		var baseLayers = {
 			"Google": googleLayer
 			,"Bing" : bingLayer
-			,"MapQuest": mapquestOSM
+			,"openstreetmap": OSM
 			// ,"IGM 25k": igmWMS
 		};
 		var overlays = {
