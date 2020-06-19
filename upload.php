@@ -3,7 +3,7 @@
 <body>
 <?php
 
-
+include('password.inc');
 if(isset($_POST['submit'])){
 $pwd=$_POST['password'];
 $target_dir = "./";
@@ -15,7 +15,7 @@ $FileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
   $fileTmpLoc = $_FILES["fileToUpload"]["tmp_name"];
   $check = mime_content_type($fileTmpLoc);
   if($check == 'text/csv' or $check== 'text/plain') {
-    if ($pwd != 'SUBnormale44'){
+    if ($pwd != $storedpassword){
 	echo "bad username or password";
     }
     echo "File is ok - " . $check . ".";

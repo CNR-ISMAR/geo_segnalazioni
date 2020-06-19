@@ -8,7 +8,7 @@
 
 .formtooltip .formtooltiptext {
   visibility: hidden;
-  width: 120px;
+  width: 320px;
   background-color: #555;
   color: #fff;
   text-align: center;
@@ -93,9 +93,9 @@
 </p>
 <p>
 <div class="formtooltip">
-<em>Le segnalazioni sono anonime e verranno gestite come tali, ma se ti fa piacere puoi lasciarci un recapito. 
+<em>Le segnalazioni sono anonime e verranno gestite come tali, ma se ti fa piacere puoi lasciarci un recapito.</em>
 <span class="formtooltiptext">
-Compilando il campo fornisci il tuo consenso ad utilizzare i tuoi recapiti al solo fine di ricontattarti.</em>
+Compilando il campo fornisci il tuo consenso ad utilizzare i tuoi recapiti al solo fine di ricontattarti.
 Ai sensi del regolamento UE 679 (GDPR) I dati personali non sono oggetto di trattamenti diversi dall'archiviazione, non verranno comunicati a terzi e 
 verranno cancellati dall'archivio entro due anni dall'inserimento. 
 Titolare del trattamento &egrave; il ricercatore Dott. PhD Marco Sigovini CNR-ISMAR Venezia</span>
