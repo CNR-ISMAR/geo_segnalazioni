@@ -14,10 +14,17 @@ https://umap.openstreetmap.fr/it/map/mappa-la-pinna-cnr-ismar_427297
 
   -  impostare la vista iniziale della mappa nel file mappa.js righe 27-30
   -  sostituire il livello di sfondo nel file mappa.js riga 40
-  -  rinominare il file segnalazioni.sample in segnlazioni.csv e adattarlo alle proprie esigenze rinominando i campi eccetto Latitude e Longitude
+  -  rinominare il file segnalazioni.sample in segnalazioni.csv e adattarlo alle proprie esigenze rinominando i campi eccetto Latitude e Longitude
   -  personalizzare il file form.php assegnando ai campi in input l'attributo name uguale ai campi usati nel file csv
   -  ridefinire l'array $savestring nel file index.php alla riga 124 in base al formato del file csv
   -  impostare la variabile $mapurl file index.php riga 95 alla url della mappa desiderata
+  - per utilizzare la funzione di upload creare un file password.inc con il seguente contenuto:
+  
+  ```php
+      <?php
+      $storedpassword='latuapassword';
+      ?>
+  ```
   
   
  Amedeo Fadini
