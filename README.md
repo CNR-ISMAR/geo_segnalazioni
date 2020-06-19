@@ -10,11 +10,12 @@ https://umap.openstreetmap.fr/it/map/mappa-la-pinna-cnr-ismar_427297
 
 2) impostare un livello di sfondo standard (es. openstreetmap) o un WMS
 
-3) scaricere ed adattare il codice:
+3) scaricare ed adattare il codice:
 
   -  impostare la vista iniziale della mappa nel file mappa.js righe 27-30
   -  sostituire il livello di sfondo nel file mappa.js riga 40
-  -  rinominare il file segnalazioni.sample in segnalazioni.csv e adattarlo alle proprie esigenze rinominando i campi eccetto Latitude e Longitude
+  -  rinominare il file segnalazioni.sample in segnalazioni.csv e adattarlo alle proprie esigenze rinominando i campi eccetto Latitude e Longitude, aggiungere uno o più righe di esempio
+  .  impostare un nuovo layer con la funzionalità dati remoti di Umap, Il file segnalazioni.csv deve essere raggiungibile in https://
   -  personalizzare il file form.php assegnando ai campi in input l'attributo name uguale ai campi usati nel file csv
   -  ridefinire l'array $savestring nel file index.php alla riga 124 in base al formato del file csv
   -  impostare la variabile $mapurl file index.php riga 95 alla url della mappa desiderata
