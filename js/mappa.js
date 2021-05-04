@@ -37,7 +37,7 @@ var OSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 })
 
-var cignobase = L.tileLayer.wms('http://cigno.atlantedellalaguna.it/geoserver/gwc/service/wms?', {
+var cignobase = L.tileLayer.wms('/mappalapinna/adl/gwc/service/wms?', {
         layers: 'carta_base'
     })
 

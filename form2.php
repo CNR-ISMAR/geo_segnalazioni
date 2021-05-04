@@ -44,7 +44,7 @@
 <input type="text" class="form-control-plaintext" id='lon' name='Longitude' size='8' value=''>
 &nbsp;<a href="https://www.latlong.net/degrees-minutes-seconds-to-decimal-degrees">Convertitore</a>
 <p>
-<!--<label for="utente">A che categoria appartieni?:</label><br>
+<label for="utente">A che categoria appartieni?:</label><br>
 <select name="utente">
 <option disabled selected value> -- scegli -- </option>
 <option value="sub">sub/snorkeling</option>
@@ -73,14 +73,16 @@
 <option value="10-100">10-100</option>
 <option value="&gt; 100">&gt; 100</option>
 <option value="nd">Non sono sicuro che sia Pinna Nobilis</option>
-</select>-->
+</select>
 <br>
-<label for="morti_appr">stato degli esemplari:</label><br>
-<input class="form-control" id="chkvivi" name="vivi" type="checkbox"/><label for="chkvivi" style="font-size: 150%">&nbsp;vivi</label>&nbsp;
-<input class="form-control" id="chkmorti" name="morti" type="checkbox"/><label for="chksmorti">&nbsp;morti</label>&nbsp;
-<input class="form-control" id="chkspiag" name="spiaggiati" type="checkbox"/><label for="chkspiag">&nbsp;spiaggiati</label>&nbsp;<br>
-<label for="N_approx">numero approssimativo:</label>&nbsp;<input class="form-control" name="N_approx" type="text" size=2>
-
+<label for="morti_appr">di cui morti:</label><br>
+<select name="morti_appr">
+<option disabled selected value> -- scegli -- </option>
+<option value="1-2 esemplari">1-2 esemplari</option>
+<option value="&lt; 50% del totale">&lt; 50% del totale</option>
+<option value="&gt; 50% del totale">&gt; 50% del totale</option>
+<option value="nd">Non saprei</option>
+</select>
 </p>
 <p>
 <label>note</label>

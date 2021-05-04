@@ -76,11 +76,10 @@
 </select>-->
 <br>
 <label for="morti_appr">stato degli esemplari:</label><br>
-<input class="form-control" id="chkvivi" name="vivi" type="checkbox"/><label for="chkvivi" style="font-size: 150%">&nbsp;vivi</label>&nbsp;
-<input class="form-control" id="chkmorti" name="morti" type="checkbox"/><label for="chksmorti">&nbsp;morti</label>&nbsp;
-<input class="form-control" id="chkspiag" name="spiaggiati" type="checkbox"/><label for="chkspiag">&nbsp;spiaggiati</label>&nbsp;<br>
-<label for="N_approx">numero approssimativo:</label>&nbsp;<input class="form-control" name="N_approx" type="text" size=2>
-
+<input id="" name="vivi" type="checkbox"/><label for="vehicle1"> Vivi</label><br>
+<input name="morti" type="checkbox"/>
+<input name="spiaggiati" type="checkbox"/>
+</select>
 </p>
 <p>
 <label>note</label>

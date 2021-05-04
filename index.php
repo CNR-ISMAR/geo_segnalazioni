@@ -103,7 +103,7 @@ $formdata = array();
 		$formdata[]=$$key;
 		
 	}
-    
+$commento='';    
 
 	// check form contents
     //check name is set
